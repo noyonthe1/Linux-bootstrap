@@ -5,11 +5,30 @@ sudo apt-get -y upgrade
 sudo apt-get -y install axel
 cd ~/Downloads
 
-# Chrome
-
+#Add repo 
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
 sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
-sudo apt-get update 
+#sudo apt-get update
+sudo add-apt-repository ppa:notepadqq-team/notepadqq
+#sudo apt-get update
+sudo apt-get -y install python-software-properties
+sudo add-apt-repository ppa:webupd8team/java
+#sudo apt-get -y update
+sudo sh -c 'echo "deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib" >> /etc/apt/sources.list.d/virtualbox.list'
+wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
+sudo apt-get update
+sudo add-apt-repository ppa:ubuntu-desktop/ubuntu-make
+#sudo apt-get -y update
+sudo add-apt-repository "deb http://download.opensuse.org/repositories/home:/sarimkhan/xUbuntu_14.04/ ./"
+wget -q http://download.opensuse.org/repositories/home:/sarimkhan/xUbuntu_14.04/Release.key -O- | sudo apt-key add -
+sudo apt-get -y update
+
+
+
+
+
+# Chrome
+
 sudo apt-get install google-chrome-stable
 
 
@@ -36,11 +55,9 @@ go version
 
 # To varify the go installation with all env variabled run go env
 go env
-
-sudo add-apt-repository ppa:notepadqq-team/notepadqq
-sudo apt-get update
 sudo apt-get install notepadqq
 
+#install docker
 wget https://gist.githubusercontent.com/EvgenyOrekhov/1ed8a4466efd0a59d73a11d753c0167b/raw/931d145f5adb5d1f95f7ffb3709a161aa1ae5b57/install-docker.sh
 chmod +x install-docker.sh
 bash install-docker.sh
@@ -84,10 +101,6 @@ pip install --upgrade pip
 
 
 # Install JDK
-
-sudo apt-get -y install python-software-properties
-sudo add-apt-repository ppa:webupd8team/java
-sudo apt-get -y update
 sudo apt-get -y install oracle-java8-installer
 
 cd ~/
@@ -96,18 +109,22 @@ echo export JAVA_HOME >> .bashrc
 echo 'JAVA_HOME=/usr/lib/jvm/java-8-oracle' | sudo tee --append /etc/environment > /dev/null
 echo 'export JAVA_HOME' | sudo tee --append /etc/environment > /dev/null
 
+sudo apt-get install virtualbox-5.1
 
 # Add various ppas
 
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
 echo "deb http://repo.mongodb.org/apt/ubuntu "$(lsb_release -sc)"/mongodb-org/3.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.0.list
-sudo sh -c "echo 'deb http://download.virtualbox.org/virtualbox/debian '$(lsb_release -cs)' contrib non-free' > /etc/apt/sources.list.d/virtualbox.list" && wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add - && sudo apt-get -y update && sudo apt-get -y install virtualbox-4.3 dkms
+sudo sh -c "echo 'deb http://download.virtualbox.org/virtualbox/debian '$(lsb_release -cs)' contrib non-free' > /etc/apt/sources.list.d/virtualbox.list" && wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add - && sudo apt-get -y update
+sudo apt-get -y install virtualbox-4.3 dkms
 
 sudo apt-get -y install -y mongodb-org
 sudo service mongod start
 
-
 sudo apt-get -y install doublecmd-gtk
+sudo apt-get -y install mc
+sudo apt-get -y install terminator
+
 cd ~/Downloads
 wget https://vivaldi.com/download/Vivaldi_TP3.1.0.162.4-1_amd64.deb
 
@@ -132,8 +149,6 @@ sudo apt-get -y install numix-gtk-theme numix-icon-theme-bevel numix-icon-theme-
 sudo apt-get -y install zukitwo zukiwi mac-ithemes-v3 mac-icons-v3 orchis3 flattastic-suite trevilla-themes vimix-flat-themes emerald-icon-theme nitrux-icon-theme azure-gtk-theme # gnomishbeige-theme gnomishdark-theme gnomishgrey-theme
 sudo apt-get -y install evolvere-icon-suite
 
-# Play on linux 
-
 # Install Titillioum Font
 cd ~/Downloads
 wget http://www.fontsquirrel.com/fonts/download/Titillium
@@ -145,16 +160,13 @@ sudo cp ./Titillium/*.otf /usr/share/fonts/
 sudo apt-get -y install wine
 
 # Install VS Code
-sudo add-apt-repository ppa:ubuntu-desktop/ubuntu-make
-sudo apt-get -y update && sudo apt-get -y install ubuntu-make
+sudo apt-get -y install ubuntu-make
 umake web visual-studio-code
 
 
 # Avro iBUS 
-
-sudo add-apt-repository "deb http://download.opensuse.org/repositories/home:/sarimkhan/xUbuntu_14.04/ ./"
-wget -q http://download.opensuse.org/repositories/home:/sarimkhan/xUbuntu_14.04/Release.key -O- | sudo apt-key add -
-sudo apt-get -y update
 sudo apt-get -y install ibus-avro-trusty
 
 cd ~/Downloads
+sudo add-apt-repository ppa:thefanclub/ubuntu-after-install
+sudo apt-get update
